@@ -1,0 +1,65 @@
+<form [formGroup]="profileFormFormBuilder" (ngSubmit)="onSubmit()">
+
+
+  <label>
+    Firstname:
+    <input type="text" formControlName="firstName">
+  </label>
+
+  <label>
+    Lastname:
+    <input required type="text" formControlName="lastName">
+  </label>
+
+  <div formGroupName="address">
+    <h3>Address</h3>
+    <label>
+      Street:
+      <input type="text" formControlName="street">
+    </label>
+    <label>
+      City:
+      <input type="text" formControlName="city">
+    </label>
+    <label>
+      State:
+      <input type="text" formControlName="state">
+    </label>
+    <label>
+      Zip:
+      <input type="text" formControlName="zip">
+    </label>
+
+  </div>
+  <button type="button" (click)="updateSomeValues()">Update some values</button>
+<br>
+  <button type="submit" [disabled]="!profileFormFormBuilder.valid">SubmitForm</button>
+
+  <div formArrayName="formAliases">
+    <h3>Aliases</h3>
+    <button (click)="addFormAlias()">Add Alias</button>
+    <div *ngFor="let address of formAliases.controls; let i=index">
+      <label >
+        Alias:
+        <input type="text" [formControlName]="i" [value]="i">
+      </label>
+      </div>
+  </div>
+
+</form>
+
+
+Passed Values:<br>
+{{PassedValues}}
+
+<p>
+  Form Status:
+  {{profileFormFormBuilder.status}}
+</p>
+
+
+
+
+
+Form Array:
+{{ControlsList}}

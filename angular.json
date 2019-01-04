@@ -10,7 +10,14 @@
       "prefix": "app",
       "schematics": {
         "@schematics/angular:component": {
-          "styleext": "scss"
+          "styleext": "scss",
+          // These lines below do the following
+          // no .specs.ts file generated
+          // generate components in the reference folder (no subfolders)
+          // no style-file generated
+          "spec": false,
+          "flat": true,
+          "inlineStyle": true
         }
       },
       "architect": {
